@@ -1,0 +1,53 @@
+name: Notify Telegram
+on:
+  pull_request:
+      types: [opened]
+  issues:
+      types: [opened]
+jobs:
+  send-telegram:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Send Telegram Message
+      run: |
+        if [ "${{ github.event_name }}" == "issues" ]; then
+          THREAD_ID=${{ secrets.TELEGRAM_TOPIC_ISSUE }}
+          MESSAGE=$(cat <<EOF
+          -----------------------
+          
+          <b>New Issue 📝</b>
+          <b>By:</b> <a href="https://github.com/${{ github.event.issue.user.login }}">${{ github.event.issue.user.login }}</a>
+          <b>Repo:</b> <a href="https://github.com/${{ github.repository }}">${{ github.repository }}</a>
+          <b>Title:</b> <code>${{ github.event.issue.title }}</code>
+          
+          -----------------------
+          
+          <a href="${{ github.event.issue.html_url }}">🔗 View Issue</a>
+          
+          EOF
+          )
+        else
+          THREAD_ID=${{ secrets.TELEGRAM_TOPIC_PR }}
+          MESSAGE=$(cat <<EOF
+          -----------------------
+
+          <b>New Pull Request 🔀</b>
+          <b>By:</b> <a href="https://github.com/${{ github.event.pull_request.user.login }}">${{ github.event.pull_request.user.login }}</a>
+          <b>Repo:</b> <a href="https://github.com/${{ github.repository }}">${{ github.repository }}</a>
+          <b>Title:</b> <code>${{ github.event.pull_request.title }}</code>
+          <b>Branch:</b> <code>${{ github.event.pull_request.head.ref }}</code>
+          
+          -----------------------
+          
+          <a href="${{ github.event.pull_request.html_url }}">🔗 View Pull Request</a>
+          
+          EOF
+          )
+        fi
+
+        curl -s -X POST https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage \
+        -d chat_id=${{ secrets.TELEGRAM_CHAT_ID }} \
+        -d message_thread_id=$THREAD_ID \
+        -d text="$MESSAGE" \
+        -d "parse_mode=HTML" \
+        -d "disable_web_page_preview=true"
