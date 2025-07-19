@@ -24,8 +24,8 @@ jobs:
           
           <a href="${{ github.event.issue.html_url }}">🔗 View Issue</a>
           
-          EOF
-          )
+        EOF
+        )
         else
           THREAD_ID=${{ secrets.TELEGRAM_TOPIC_PR }}
           echo "Debug: Event name is ${{ github.event_name }}"
@@ -42,8 +42,9 @@ jobs:
           
           <a href="${{ github.event.pull_request.html_url }}">🔗 View Pull Request</a>
           
-          EOF
-          )
+        EOF
+        )
+        
         fi
 
         curl -s -X POST https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage \
