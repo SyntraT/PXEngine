@@ -1,0 +1,8 @@
+# Create an executable target named 'Sandbox' using the source file 'main.cpp'
+add_executable(Sandbox main.cpp)
+
+# Link the static library 'PXEngine' to the executable target 'Sandbox'
+target_link_libraries(Sandbox PRIVATE PXEngine)
+
+# Add the 'engine' directory to the include path for this target
+target_include_directories(Sandbox PRIVATE ${PROJECT_SOURCE_DIR}/src)  

@@ -1,0 +1,45 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 21,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "default",
+      "hidden": true,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "YES"
+      }
+    },
+    {
+      "name": "debug",
+      "inherits": "default",
+      "description": "Debug build",
+      "cacheVariables": {
+      "CMAKE_BUILD_TYPE": "Debug",
+      "PXENGINE_DEV_MODE": "ON"
+      }
+    },
+    {
+      "name": "release",
+      "inherits": "default",
+      "description": "Release build",
+      "cacheVariables": {
+      "CMAKE_BUILD_TYPE": "Release",
+      "PXENGINE_DEV_MODE": "OFF"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "debug",
+      "configurePreset": "debug",
+      "description": "Build the debug version",
+      "jobs": 4
+    }
+  ]
+}
