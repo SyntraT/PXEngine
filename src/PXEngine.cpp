@@ -1,10 +1,11 @@
 #include "PXEngine.h"
+#include "core/debug/debug.h"
 
 void PXEngine::init() {
-	std::cout << "initialize PXEngine" << std::endl;
+	LOG_INFO("Hello...!");
 }
 
 void PXEngine::run() {
-	std::cout << "running PXEngine...!" << std::endl;
+	LOG_ERROR("not exist PXEngine..!");
 	while(true);
 }
