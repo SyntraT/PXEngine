@@ -20,8 +20,7 @@
       "inherits": "default",
       "description": "Debug build",
       "cacheVariables": {
-      "CMAKE_BUILD_TYPE": "Debug",
-      "PXENGINE_DEV_MODE": "ON"
+      "CMAKE_BUILD_TYPE": "Debug"
       }
     },
     {
@@ -29,8 +28,7 @@
       "inherits": "default",
       "description": "Release build",
       "cacheVariables": {
-      "CMAKE_BUILD_TYPE": "Release",
-      "PXENGINE_DEV_MODE": "OFF"
+      "CMAKE_BUILD_TYPE": "Release"
       }
     }
   ],
@@ -39,6 +37,12 @@
       "name": "debug",
       "configurePreset": "debug",
       "description": "Build the debug version",
+      "jobs": 4
+    },
+    {
+      "name": "release",
+      "configurePreset": "release",
+      "description": "Build the release version",
       "jobs": 4
     }
   ]
