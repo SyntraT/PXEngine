@@ -20,7 +20,7 @@
       "inherits": "default",
       "description": "Debug build",
       "cacheVariables": {
-      "CMAKE_BUILD_TYPE": "Debug",
+      "CMAKE_BUILD_TYPE": "Debug"
       }
     },
     {
@@ -28,7 +28,7 @@
       "inherits": "default",
       "description": "Release build",
       "cacheVariables": {
-      "CMAKE_BUILD_TYPE": "Release",
+      "CMAKE_BUILD_TYPE": "Release"
       }
     }
   ],
