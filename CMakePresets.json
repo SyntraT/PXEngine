@@ -21,7 +21,7 @@
       "description": "Debug build",
       "cacheVariables": {
       "CMAKE_BUILD_TYPE": "Debug",
-      "PXENGINE_DEV_MODE": "ON"
+      "ENABLE_TRACY": false
       }
     },
     {
@@ -30,7 +30,7 @@
       "description": "Release build",
       "cacheVariables": {
       "CMAKE_BUILD_TYPE": "Release",
-      "PXENGINE_DEV_MODE": "OFF"
+      "ENABLE_TRACY": false
       }
     }
   ],
@@ -39,6 +39,12 @@
       "name": "debug",
       "configurePreset": "debug",
       "description": "Build the debug version",
+      "jobs": 4
+    },
+    {
+      "name": "release",
+      "configurePreset": "release",
+      "description": "Build the release version",
       "jobs": 4
     }
   ]
