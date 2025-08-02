@@ -2,10 +2,21 @@
 #include "core/debug/debug.h"
 
 void PXEngine::init() {
-	LOG_INFO("Hello...!");
+	
 }
 
 void PXEngine::run() {
-	LOG_ERROR("not exist PXEngine..!");
-	while(true);
+
+	Logger::Instance().Start();
+
+	LOG_ERROR("Hey PXEngine not complete :D");
+	LOG_WARNING("Please wait until it is complete. : )");
+	LOG_INFO("thanks %s", "\033[31m<3");
+
+
+	int i = 0;
+	
+	while(true) {
+		i++;
+	}
 }

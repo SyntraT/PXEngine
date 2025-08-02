@@ -4,10 +4,10 @@
 
 int main() {
 	PXEngine px;
-	Debug::SetLevel(LogLevel::Warning);
-	Debug::Info("Starting PXEngine...!");
 	px.init();
-	Debug::Warning("not init");
 	px.run();
+
+	Logger::Instance().Stop();
+
 	return 0;
 }
