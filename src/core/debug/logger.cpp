@@ -1,12 +1,18 @@
 #include "logger.h"
 
 void Logger::Start() {
+	#ifndef NDEBUG
+
     this->running = true;
 
     if(this->thread.joinable())
     	this->thread.join();
 
     this->thread = std::thread(&Logger::loggerThread, this);
+    
+    #else 
+    return;
+    #endif
 }
 
 void Logger::enqueueMessage(const char* format, va_list args, LogLevel level, const char* file, uint16_t line) {
