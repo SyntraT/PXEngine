@@ -1,10 +1,13 @@
 #include "iostream"
 #include "PXEngine.h"
+#include "core/debug/debug.h"
 
 int main() {
 	PXEngine px;
-	std::cout << "Starting PXEngine...!" << std::endl;
 	px.init();
 	px.run();
+
+	Logger::Instance().Stop();
+
 	return 0;
 }

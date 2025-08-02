@@ -1,5 +1,0 @@
-file(GLOB_RECURSE ENGINE_SRC CONFIGURE_DEPENDS *.cpp *.h)
-
-add_library(PXEngine STATIC ${ENGINE_SRC})
-
-target_include_directories(PXEngine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
