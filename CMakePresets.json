@@ -20,7 +20,8 @@
       "inherits": "default",
       "description": "Debug build",
       "cacheVariables": {
-      "CMAKE_BUILD_TYPE": "Debug"
+      "CMAKE_BUILD_TYPE": "Debug",
+      "ENABLE_TRACY": false
       }
     },
     {
@@ -28,7 +29,8 @@
       "inherits": "default",
       "description": "Release build",
       "cacheVariables": {
-      "CMAKE_BUILD_TYPE": "Release"
+      "CMAKE_BUILD_TYPE": "Release",
+      "ENABLE_TRACY": false
       }
     }
   ],
