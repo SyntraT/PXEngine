@@ -1,0 +1,51 @@
+name: Build PXEngine Release
+
+on:
+  push:
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -y cmake g++ ninja-build
+
+    - name: Build project
+      run: cmake --preset release && cmake --build --preset release
+
+    - name: Upload build artifacts (optional)
+      if: success()
+      uses: actions/upload-artifact@v4
+      with:
+        name: PXEngine-Linux
+        path: bin/
+
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up CMake
+      uses: lukka/get-cmake@v3.27.0
+
+    - name: Install Ninja (via Chocolatey)
+      run: choco install ninja -y
+
+    - name: Build project
+      run: cmake --preset release && cmake --build --preset release --config Release
+
+    - name: Upload build artifacts (optional)
+      if: success()
+      uses: actions/upload-artifact@v4
+      with:
+        name: PXEngine-Windows
+        path: bin/

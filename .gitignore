@@ -21,6 +21,7 @@ CMakeUserPresets.json
 
 # Sublime Config
 *.sublime-project
+*.sublime-workspace
 
 # Build Folder
 build
